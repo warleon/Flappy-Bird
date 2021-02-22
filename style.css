@@ -1,0 +1,51 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+#game{
+    --gw:500;
+    --gh:200;
+    --bw:20;
+    --bh:20;
+    --cw:20;
+    --ch:50;
+    width: calc(var(--gw) * 1px); 
+    height: calc(var(--gh) * 1px); 
+    border: 1px solid black;
+    position: absolute;
+}
+
+#character{
+    width: calc(var(--cw) * 1px); 
+    height: calc(var(--ch) * 1px); 
+    background-color: red;
+    position: absolute;
+    top: calc((var(--gh) - var(--ch) ) * 1px);
+}
+
+.anim{
+    animation: jump 0.5s linear;
+}
+
+#block{
+    width: calc(var(--bw) * 1px); 
+    height: calc(var(--bh) * 1px); 
+    background-color: blue;
+    position:absolute;
+    top: calc( (var(--gh) - var(--bh)) * 1px);
+    left: calc( (var(--gw) - var(--bw)) * 1px);
+    animation: block 2s infinite linear;
+}
+
+@keyframes block{
+    from{left: calc( (var(--gw) - var(--bw)) * 1px);}
+    to{left: calc( (0 - var(--bw)) * 1px);}
+}
+
+@keyframes jump{
+    0%{top: calc((var(--gh) - var(--ch) ) * 1px);}
+    30%{top: calc((var(--gh) - var(--ch) - 2 * var(--bh) ) * 1px);}
+    70%{top: calc((var(--gh) - var(--ch) - 2 * var(--bh) ) * 1px);}
+    100%{top: calc((var(--gh) - var(--ch) ) * 1px);}
+}
